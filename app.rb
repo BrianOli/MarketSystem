@@ -3,9 +3,9 @@ require_relative 'mercado.rb'
 require_relative 'produto.rb'
 require_relative 'carrinho.rb'
 
-frame_start
+
 x = 0
-label(:questions) do
+loop do
     cart = Cart.new
     product = Product.new
 
@@ -33,12 +33,16 @@ label(:questions) do
         product.price = gets.chomp.to_f
 
         cart.add(product.name, product.price)
+
+        x += 1
         
     when 2
         system ("cls")
         puts "Informe o nome do produto que deseja excluir: "
         nameP = gets.chomp
         cart.remove(nameP)
+
+        x -= 1
     
     when 3
         system ("cls")
@@ -49,13 +53,6 @@ label(:questions) do
 
     else
         system ("cls")
-        return
+        break
     end
 end
-
-label (:goto) do
-    x = 1
-    goto :questions
-end
-
-frame_end

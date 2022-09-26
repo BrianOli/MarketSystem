@@ -1,5 +1,5 @@
 class Cart
-    
+    @totalPrice = 0
     $price = Array.new    
     $name = Array.new
 
@@ -9,7 +9,6 @@ class Cart
         $price.push(price)
 
         puts "#{$name}"
-
         
         puts "Produto adicionado :D"
         
@@ -32,8 +31,18 @@ class Cart
         x = 0
         while x < $name.size()
             puts "#{x+1} - Nome: #{$name[x]}, valor: #{$price[x]}"
+
+            adding = 0
+            while adding < $name.size()
+                @price = $price[adding]
+                @totalPrice += @price   
+                adding += 1
+            end
+
             x += 1
         end
+        
+        puts "Total: #{@totalPrice}"
     end
 end
 
