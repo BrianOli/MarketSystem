@@ -12,6 +12,8 @@ class Cart
         
         puts "Produto adicionado :D"
         
+        @@totalPrice += @@price[-1] 
+
         sleep 1
         system('cls')
         
@@ -20,11 +22,12 @@ class Cart
     def remove(item)
         index = @@name.index(item)
         
+        @@totalPrice = @@totalPrice - @@price[index]
         @@name.delete_at(index)
         @@price.delete_at(index)
+
         puts "Produto removido com sucesso :D" 
            
-
     end
 
     def list
@@ -32,12 +35,6 @@ class Cart
         while x < @@name.size()
             puts "#{x+1} - Nome: #{@@name[x]}, valor: #{@@price[x]}"
 
-            adding = 0
-            while adding < @@name.size()
-                @@price = @@price[adding]
-                @@totalPrice += @@price   
-                adding += 1
-            end
 
             x += 1
         end
